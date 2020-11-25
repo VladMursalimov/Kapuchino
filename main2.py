@@ -8,7 +8,7 @@ from PyQt5.QtCore import *
 class Coffee(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('mai12n.ui', self)
+        uic.loadUi('main.ui', self)
         self.updatebtn.clicked.connect(self.update1)
         self.con = sqlite3.connect('coffee.sqlite')
         self.edit_btn.clicked.connect(self.add_and_edit)
@@ -48,10 +48,10 @@ class Coffee(QMainWindow):
 class EditMenu(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('addEditCoffeeFor12m.ui', self)
+        uic.loadUi('addEditCoffeeForm.ui', self)
         self.con = sqlite3.connect('coffee.sqlite')
         self.s = self.con.cursor().execute("Select * FROM coffe").fetchall()
-
+        self.id_input.setMaximum(len([i for i in self.s]) + 1)
         self.confirm_button.clicked.connect(self.editing)
 
     def editing(self):
