@@ -16,7 +16,6 @@ class Coffee(QMainWindow):
         self.title = ['ID', 'название сорта', 'степень обжарки', 'молотый/в зернах',
                       'описание вкуса', 'цена', 'объем упаковки']
         self.result = self.cur.execute("Select * FROM coffe").fetchall()
-        print(self.result)
         self.coffeetable.setRowCount(0)
         self.coffeetable.setColumnCount(len(self.title))
         self.coffeetable.setHorizontalHeaderLabels(self.title)
